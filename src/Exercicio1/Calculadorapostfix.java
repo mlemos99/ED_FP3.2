@@ -72,19 +72,28 @@ public class Calculadorapostfix {
                 }
                 break;
             default :
-                a.push(Double.parseDouble(parts[i]));
-               
+               if(isDouble(parts[i])){
+                    a.push(Double.parseDouble(parts[i]));
+                }else{
+                return null;
+                }
                 
                 break;
-        }
             
+            }
         }
-        
-        
             
         return a.peek();
         
         
+    }
+      boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 
