@@ -10,26 +10,25 @@ package Exercicio2;
  * @author Utilizador
  */
 public class LinearNode<T> {
+
     private LinearNode next; // referencia para o proximo elemento da lista
     private T elemento; // elemento a adicionar
 
     public LinearNode() {
-        this.next=null;
-        this.elemento=null;
+        this.next = null;
+        this.elemento = null;
     }
 
-    
-    
     public LinearNode(T elemento) {
-        this.next=null;
+        this.next = null;
         this.elemento = elemento;
     }
 
-    public LinearNode getNext() {
+    public LinearNode<T> getNext() {
         return next;
     }
 
-    public void setNext(LinearNode next) {
+    public void setNext(LinearNode<T> next) {
         this.next = next;
     }
 
@@ -40,5 +39,5 @@ public class LinearNode<T> {
     public void setElemento(T elemento) {
         this.elemento = elemento;
     }
-    
+
 }

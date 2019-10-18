@@ -9,111 +9,71 @@ package Exercicio2;
  *
  * @author Utilizador
  */
-public class LinkedStack<T> implements Exercicio2.StackADT<T> {
-    private LinearNode<T> head;//referencia para a primeira
-   
-    private int count;//contador de elementos da lista
+public class LinkedStack<T> implements StackADT<T> {
 
-/**
- * Metodo construtor para uma lista vazia
- */
+     private LinearNode<T> head;
+    private int size;
+
     public LinkedStack() {
-        head = null;
-        count = 0;
+        this.head = null;
+        this.size = 0;
     }
 
-    public int getCount() {
-        return count;
-    }
-/**
- * Metodo para verificar se a lista esta vazia
- * retorna true se estiver vazia , false se estiver cheia
- * @return bollean que indica se a lista esta cheia ou vazia
- */
     @Override
-    public boolean isEmpty() {
-        return (count == 0);
-    }
-
-    /**
-     * Metodo que adiciona um novo nó a lista
-     * @param element valor a acrescentar
-     */
-     @Override
     public void push(T element) {
-       LinearNode<T> nova = new LinearNode<>(element);
-       LinearNode<T> aux=head;
-        if (this.head == null) {
-            head = nova;
-           
+        LinearNode<T> newNode = new LinearNode<>(element);
+        if (isEmpty()) {
+            head = newNode;
         } else {
-
-
-            nova.setNext(head);
-            head=nova;
-
-           
+            newNode.setNext(head); //novoNode vai ser atribuido a referencia do head
+            head = newNode; //o novoNode passa a primeiro elemento
         }
-
-        this.count++;
+        size++;
     }
- 
 
-    /**
-     * Metodo que remove o elemento armazenado no primeiro nó da lista
-     */
+    public boolean isEmpty() {
+        return (size == 0);
+    }
+
     @Override
     public T pop() throws EmptyCollectionException {
-        
-        
+        LinearNode<T> aux= head;
         if (isEmpty()) {
-             throw new EmptyCollectionException("Stack");
-        } else {
-         
-            
-            this.head=head.getNext();
-
-           
-            
-            this.count--;
-            return this.head.getElemento();
+            throw  new EmptyCollectionException("stack");
         }
-         
+        
+            head = head.getNext(); //remove o nó a cabeça
+            this.size--;
 
+        
+        return aux.getElemento();
     }
+
     @Override
-     public T peek() throws EmptyCollectionException{
-        if(this.isEmpty()){
-             throw new EmptyCollectionException("Stack");
+    public T peek() throws EmptyCollectionException {
+        if (this.isEmpty()) {
+             throw  new EmptyCollectionException("stack");
         }
-        return this.head.getElemento();
+        return head.getElemento();
     }
- 
-   
-   
 
-      
+    @Override
     public int size() {
-        return count;
+        return size;
     }
-    
-    
-    
-    
-    
+
     @Override
-     public String toString() {
-        int i=0;
-         String str="[";
-        LinearNode<T> lista=head;
-        while(i!=count){
-          str=str+lista.getElemento()+" ";
-            lista=lista.getNext();
+    public String toString() {
+        String str = "";
+        int i = 0;
+        LinearNode<T> c = head;
+        while(i != size) {
+            str = str + c.getElemento() + " ";
+            c = c.getNext();
             i++;
-     }
-        
-        
-        return str+"]";
-        
+        }
+
+        return str + "";
+
     }
 }
