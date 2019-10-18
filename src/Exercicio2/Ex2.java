@@ -19,11 +19,11 @@ public class Ex2 {
         
         
     Calculadorapostfix c=new Calculadorapostfix();
-    System.out.println(c.calculate("3 4 + 2 *"));
-    System.out.println(c.calculate("3 + + 2 *"));
-    System.out.println(c.calculate("7 4 -3 * 1 5 + / *"));
+    //System.out.println(c.calculate("3 4 + 2 *"));
+    //System.out.println(c.calculate("3 + + 2 *"));
+    //System.out.println(c.calculate("7 4 -3 * 1 5 + / *"));
     
-    System.out.println(c.calculate("1 2 -"));
+    //System.out.println(c.calculate("1 2 -"));
         System.out.println(c.calculate("1 2 /"));
     }
     
