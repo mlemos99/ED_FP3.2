@@ -10,7 +10,7 @@ package Exercicio1;
  * @author Utilizador
  */
 public class Calculadorapostfix {
-    private ArrayStack<Integer> a;
+    private ArrayStack<Double> a;
 
     public Calculadorapostfix() {
         this.a = new ArrayStack<>();
@@ -20,7 +20,7 @@ public class Calculadorapostfix {
         this.a = new ArrayStack<>(capacidade);
     }
     
-    public int calculate(String n){
+    public Double calculate(String n) throws EmptyCollectionException{
         
         String[] parts=n.split(" ");
         
@@ -29,51 +29,51 @@ public class Calculadorapostfix {
             switch(parts[i]){
             case "+":
                 if(a.size()<2){
-                    System.out.println("nao tem 2 elementos");
-                    return 0;
+                    System.out.println("Nao tem 2 elementos");
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper2+oper1);
                 }
                 break;
             case "-":
                 if(a.size()<2){
                     System.out.println("nao tem 2 elementos");
-                    return 0;
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper1-oper2);
                 }
                 break;
             case "/":
                 if(a.size()<2){
                     System.out.println("nao tem 2 elementos");
-                    return 0;
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper1/oper2);
                 }
                 break;
             case "*":
                 if(a.size()<2){
                     System.out.println("nao tem 2 elementos");
-                    return 0;
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper2*oper1);
                 }
                 break;
             default :
-                a.push(Integer.parseInt(parts[i]));
-                
+                a.push(Double.parseDouble(parts[i]));
+               
                 
                 break;
         }
@@ -86,4 +86,6 @@ public class Calculadorapostfix {
         
         
     }
+
+
 }

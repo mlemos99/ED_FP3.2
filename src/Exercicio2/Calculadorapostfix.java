@@ -10,14 +10,14 @@ package Exercicio2;
  * @author Utilizador
  */
 public class Calculadorapostfix {
-        private LinkedStack<Integer> a;
+        private LinkedStack<Double> a;
 
     public Calculadorapostfix() {
         this.a = new LinkedStack<>();
     }
 
     
-    public int calculate(String n){
+    public Double calculate(String n) throws EmptyCollectionException{
         
         String[] parts=n.split(" ");
         
@@ -26,51 +26,51 @@ public class Calculadorapostfix {
             switch(parts[i]){
             case "+":
                 if(a.size()<2){
-                    System.out.println("nao tem 2 elementos");
-                    return 0;
+                    System.out.println("Nao tem 2 elementos");
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper2+oper1);
                 }
                 break;
             case "-":
                 if(a.size()<2){
                     System.out.println("nao tem 2 elementos");
-                    return 0;
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper1-oper2);
                 }
                 break;
             case "/":
                 if(a.size()<2){
                     System.out.println("nao tem 2 elementos");
-                    return 0;
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper1/oper2);
                 }
                 break;
             case "*":
                 if(a.size()<2){
                     System.out.println("nao tem 2 elementos");
-                    return 0;
+                    return null;
                 }
                 else{
-                int oper2=a.pop();
-                int oper1=a.pop();
+                double oper2=a.pop();
+                double oper1=a.pop();
                 a.push(oper2*oper1);
                 }
                 break;
             default :
-                a.push(Integer.parseInt(parts[i]));
-                
+                a.push(Double.parseDouble(parts[i]));
+               
                 
                 break;
         }

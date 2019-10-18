@@ -39,9 +39,9 @@ public class ArrayStack<T> implements Exercicio1.StackADT<T> {
     }
 
     @Override
-    public T pop() {
+    public T pop() throws EmptyCollectionException{
        if(isEmpty()){
-           return null;
+           throw new EmptyCollectionException("Stack");
        }
            top--;
            T result =stack[top];
@@ -51,9 +51,9 @@ public class ArrayStack<T> implements Exercicio1.StackADT<T> {
     }
 
     @Override
-    public T peek() {
+    public T peek() throws EmptyCollectionException {
         if(isEmpty()){
-            return null;
+            throw new EmptyCollectionException("Stack");
         }
         return stack[top-1];
     }
